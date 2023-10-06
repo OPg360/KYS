@@ -20,33 +20,14 @@
 <meta property="og:description"   content="kys.bet" />
 <meta property="og:image"         content="https://files.catbox.moe/g0wzdo.png" />
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const commentTextElement = document.getElementById("comment-text");
-        const commentSubmitButton = document.getElementById("comment-submit");
-
-        commentSubmitButton.addEventListener("click", function () {
-            const commentText = commentTextElement.value;
-            const maxLength = parseInt(commentTextElement.getAttribute("maxlength"), 10);
-
-            if (commentText.trim() !== "") {
-                if (commentText.length > maxLength) {
-                    alert(`Your comment must be ${maxLength} characters or less.`);
-                } else {
-                    // Submit the comment to Utterances
-                    const utterances = document.querySelector("iframe.utterances-frame");
-                    utterances.contentWindow.postMessage({
-                        type: "comment",
-                        text: commentText,
-                    }, "https://utteranc.es");
-                    
-                    // Clear the comment text area
-                    commentTextElement.value = "";
-                }
-            }
-        });
-    });
+<script src="https://utteranc.es/client.js"
+    repo="Opg360/kys"
+    issue-term="pathname"
+    theme="github-light"
+    crossorigin="anonymous"
+    async>
 </script>
+
 
 
 
@@ -119,28 +100,22 @@
 	</div>
 	
 
-
-
-
-	<div class="contenthead">
-		<div class="contenttitle">Kys.bet</div>
-	</div>
-	<div class="contentfill">
-		<div class="contentinfo">
-				
-			<p>Don't actually kys lol ily <3</p>
-			
-			<p>My contact is opg360 on discord</p>
-			
-			<p>This domain is for sale for 500$ 
-				the price includes the transfer fees
-			</p>
-
+	<div class="contentbox">
+		<div class="contenthead">
+			<div class="contenttitle">Kys.bet</div>
+		</div>
+		<div class="contentfill">
+			<div class="contentinfo">
+				<p>COMMENT</p>
+				<!-- Add a placeholder for Utterances comments -->
+				<div id="utterances-container"></div>
+			</div>
+		</div>
+		<div class="contentfooter">
+			<div class="contentauthor">anon - 10.6.23</div>
 		</div>
 	</div>
-	<div class="contentfooter">
-		<div class="contentauthor">opg360 - 10.4.23</div>
-	</div>
+	
 
 
 
