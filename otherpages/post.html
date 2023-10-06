@@ -20,6 +20,36 @@
 <meta property="og:description"   content="kys.bet" />
 <meta property="og:image"         content="https://files.catbox.moe/g0wzdo.png" />
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const commentTextElement = document.getElementById("comment-text");
+        const commentSubmitButton = document.getElementById("comment-submit");
+
+        commentSubmitButton.addEventListener("click", function () {
+            const commentText = commentTextElement.value;
+            const maxLength = parseInt(commentTextElement.getAttribute("maxlength"), 10);
+
+            if (commentText.trim() !== "") {
+                if (commentText.length > maxLength) {
+                    alert(`Your comment must be ${maxLength} characters or less.`);
+                } else {
+                    // Submit the comment to Utterances
+                    const utterances = document.querySelector("iframe.utterances-frame");
+                    utterances.contentWindow.postMessage({
+                        type: "comment",
+                        text: commentText,
+                    }, "https://utteranc.es");
+                    
+                    // Clear the comment text area
+                    commentTextElement.value = "";
+                }
+            }
+        });
+    });
+</script>
+
+
+
 
 <!-- META TAGS -->
 <meta name="viewport" content="width-device-width, initial-scale=1.0"/>
@@ -30,7 +60,7 @@
 
 
 <!-- CSS FILES -->
-<link href="css/techredcss.css" rel="stylesheet" type="text/css" />
+<link href="../css/techredcss.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -51,11 +81,11 @@
 
 	<div id="menu">
 		<ul>
-			<li><a href="#">Home</a></li>
-			<li><a href="otherpages/post.html">Post</a></li>
+			<li><a href="../index.html">Home</a></li>
+			<li><a href="#">Post</a></li>
 			<li><a href="#">coming soon</a></li>
 			<li><a href="#">coming soon</a></li>
-			<li><a href="otherpages/contact.html">Contact</a></li>
+			<li><a href="contact.html">Contact</a></li>
 		</ul>
 	</div>
 
@@ -74,21 +104,22 @@
 <div class="contentbox">
 
 
-	<div class="contenthead">
-		<div class="contenttitle">OPg360</div>
-	</div>
-	<div class="contentfill">
-		<div class="contentinfo">
-				
-			<p>added new featuers </p>
-			<p>added Post and Contact tabs </p>
 
-
+	<!-- Add this code after your existing content -->
+	<div class="commentbox">
+		<div class="contenthead">
+			<div class="contenttitle">Leave a Comment</div>
+		</div>
+		<div class="contentfill">
+			<div class="contentinfo">
+				<textarea id="comment-text" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
+				<button id="comment-submit">Submit</button>
+			</div>
 		</div>
 	</div>
-	<div class="contentfooter">
-		<div class="contentauthor">opg360 - 10.6.23</div>
-	</div>
+	
+
+
 
 
 	<div class="contenthead">
@@ -149,7 +180,7 @@
 		<div class="navheader">Info Box</div>
 		<div class="navfill">
 			<div class="navinfo">
-				<img src="images\city.gif" alt="kawai" style="max-width: 100%; max-height: 100%;">
+				<img src="../images\city.gif" alt="kawai" style="max-width: 100%; max-height: 100%;">
 			</div>
 
 		</div>
